@@ -10,6 +10,8 @@ public class Grid : MonoBehaviour {
 	private Mesh mesh;
 	private Vector3[] vertices; // there should be xSize+1 * ySize+1 vertices
 	private int[] triangles;
+	private Vector2[] uv;
+	private Vector4[] tangents;
 
 	private void Awake(){
 		Generate();
@@ -20,12 +22,19 @@ public class Grid : MonoBehaviour {
 		mesh.name = "Procedural Grid";
 
 		vertices = new Vector3[(xSize+1) * (ySize+1)];
+		uv = new Vector2[vertices.Length];
+		tangents = new Vector4[vertices.Length];
+		Vector4 tangent = new Vector4(1f, 0f, 0f, -1f);
 		for(int i=0, y=0; y<=ySize; ++y){
 			for(int x=0; x<=xSize; ++x, ++i){
 				vertices[i] = new Vector3(x, y);
+				uv[i] = new Vector2((float)x / xSize, (float)y / ySize);
+				tangents[i] = tangent;
 			}
 		}
 		mesh.vertices = vertices;
+		mesh.uv = uv;
+		mesh.tangents = tangents;
 
 		triangles = new int[xSize * ySize * 6];
 		for(int ti=0, vi=0, y=0; y<ySize; ++y, ++vi){
@@ -37,7 +46,7 @@ public class Grid : MonoBehaviour {
 			}
 		}
 		mesh.triangles = triangles;
-
+		mesh.RecalculateNormals();
 	}
 
 	private void OnDrawGizmos(){
