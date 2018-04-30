@@ -8,12 +8,15 @@ public class LevelLoader : MonoBehaviour {
 
 	public GameObject loadingScreen;
 	public Slider slider;
-	//public Text progressText;
 	public TMP_Text progressText;
 
 
-	public void LoadLevel(int sceneIndex){
+	public void LoadLevelWithLoadingBar(int sceneIndex){
 		StartCoroutine(LoadAsync(sceneIndex));
+	}
+
+	public void LoadLevelWithFade(int sceneIndex){
+		StartCoroutine(LoadSyncWithFade(sceneIndex));
 	}
 
 	IEnumerator LoadAsync(int sceneIndex){
@@ -29,5 +32,12 @@ public class LevelLoader : MonoBehaviour {
 		}
 
 	}
+
+	IEnumerator LoadSyncWithFade(int sceneIndex){
+		float fadeTime = GameObject.Find("_GM").GetComponent<Fading>().BeginFade(1);
+		yield return new WaitForSeconds(fadeTime);
+		SceneManager.LoadScene(sceneIndex);
+	}
+
 
 }
