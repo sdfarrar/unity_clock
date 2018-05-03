@@ -17,4 +17,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/samples/Transitions/TransitionScene2.unity
     guid: 657a651f251f0f24295cb55406139ec9
+  - enabled: 1
+    path: Assets/samples/Multiscene/MultiScene3.unity
+    guid: 7a2c0c339abcc9144b8d474706d8c34d
+  - enabled: 1
+    path: Assets/samples/Multiscene/MultiScene1.unity
+    guid: 2b2ddd2d214acd2498bf7df0173a8211
+  - enabled: 1
+    path: Assets/samples/Multiscene/MultiScene2.unity
+    guid: a711b7108a8d8824db151d1ca779fa65
+  - enabled: 1
+    path: Assets/samples/Multiscene/MultiSceneBase.unity
+    guid: f20b51fe98689794ebd410d1b93816cf
   m_configObjects: {}
