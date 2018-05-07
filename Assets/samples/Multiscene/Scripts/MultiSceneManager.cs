@@ -28,4 +28,8 @@ public class MultiSceneManager : MonoBehaviour {
 		SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
 	}
 
+	public void UnloadScene(string name){
+		SceneManager.UnloadSceneAsync(name);
+	}
+
 }
